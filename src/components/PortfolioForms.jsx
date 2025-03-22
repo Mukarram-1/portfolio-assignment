@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { usePortfolio } from '../context/PortfolioContext';
 import '../styles/DataEntryForm.css';
 
-const DataEntryForm = ({ onSubmit }) => {
+const PortfolioForms = ({ onSubmit }) => {
   const { setPortfolioData } = usePortfolio();
   
   const [formData, setFormData] = useState({
@@ -468,4 +468,4 @@ const DataEntryForm = ({ onSubmit }) => {
   );
 };
 
-export default DataEntryForm; 
+export default PortfolioForms; 
