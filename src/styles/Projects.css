@@ -1,0 +1,190 @@
+.projects {
+  padding: 5rem 0;
+  background-color: var(--background-color, #f9f9f9);
+}
+
+.projects .container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-title h2 {
+  font-size: 2.5rem;
+  color: var(--text-color, #333);
+  position: relative;
+  display: inline-block;
+}
+
+.section-title h2::after {
+  content: '';
+  position: absolute;
+  width: 50%;
+  height: 3px;
+  background-color: var(--primary-color, #5e3bee);
+  bottom: -10px;
+  left: 25%;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  margin: 0 auto;
+}
+
+.project-item {
+  transition: transform 0.3s ease;
+  height: 100%;
+}
+
+/* Draggable hint styling */
+.draggable-hint {
+  text-align: center;
+  margin-top: 2rem;
+  padding: 0.75rem;
+  background-color: rgba(94, 59, 238, 0.1);
+  border-radius: 8px;
+  color: var(--text-color, #333);
+}
+
+.draggable-hint p {
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* Loading and error states */
+.loading, .error-message {
+  text-align: center;
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: 600px;
+}
+
+.spinner {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(94, 59, 238, 0.1);
+  border-radius: 50%;
+  border-top-color: var(--primary-color, #5e3bee);
+  animation: spin 1s ease-in-out infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.error-message p {
+  color: #e74c3c;
+}
+
+/* Dark mode support */
+body[data-theme="dark"] .projects {
+  background-color: var(--dark-bg, #1a1a1a);
+}
+
+body[data-theme="dark"] .section-title h2 {
+  color: var(--dark-text, #e0e0e0);
+}
+
+body[data-theme="dark"] .draggable-hint {
+  background-color: rgba(126, 92, 255, 0.15);
+  color: var(--dark-text, #e0e0e0);
+}
+
+body[data-theme="dark"] .spinner {
+  border-color: rgba(126, 92, 255, 0.2);
+  border-top-color: var(--dark-primary, #7e5cff);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .section-title h2 {
+    font-size: 2rem;
+  }
+  
+  .projects {
+    padding: 3rem 0;
+  }
+}
+
+/* Animation when dragging */
+.project-item.dragging {
+  z-index: 100;
+  opacity: 0.8;
+  transform: scale(1.05);
+}
+
+/* Media queries for responsive grids */
+@media (max-width: 992px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* GitHub fetch form styles */
+.github-fetch-form {
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.github-fetch-form form {
+  width: 100%;
+  max-width: 500px;
+}
+
+.github-fetch-form .form-group {
+  display: flex;
+  gap: 10px;
+}
+
+.github-fetch-form input {
+  flex: 1;
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.github-fetch-form button {
+  background-color: var(--primary-color, #5e3bee);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.github-fetch-form button:hover {
+  background-color: var(--primary-hover, #4a2bdc);
+}
+
+/* Dark mode styles */
+body[data-theme="dark"] .github-fetch-form input {
+  background-color: #333;
+  border-color: #555;
+  color: #fff;
+}
+
+body[data-theme="dark"] .github-fetch-form button {
+  background-color: var(--dark-primary, #7e5cff);
+}
+
+body[data-theme="dark"] .github-fetch-form button:hover {
+  background-color: #6a48e0;
+} 

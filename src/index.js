@@ -4,6 +4,12 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+// Add FontAwesome script
+const fontAwesomeScript = document.createElement('script');
+fontAwesomeScript.src = 'https://kit.fontawesome.com/a076d05399.js';
+fontAwesomeScript.crossOrigin = 'anonymous';
+document.head.appendChild(fontAwesomeScript);
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>

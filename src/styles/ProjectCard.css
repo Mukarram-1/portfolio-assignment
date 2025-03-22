@@ -1,0 +1,150 @@
+.project-card {
+  background-color: var(--card-bg-color, #ffffff);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  cursor: grab;
+}
+
+.project-card:active {
+  cursor: grabbing;
+}
+
+.project-image {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.project-card:hover .project-image img {
+  transform: scale(1.05);
+}
+
+.project-content {
+  padding: 1.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-content h3 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  font-size: 1.25rem;
+  color: var(--text-color, #333);
+}
+
+.project-content p {
+  color: var(--text-secondary, #666);
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.project-links {
+  display: flex;
+  gap: 1rem;
+  margin-top: auto;
+}
+
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  background-color: var(--primary-color, #5e3bee);
+  color: white;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.project-link:hover {
+  background-color: var(--primary-hover, #4a2bdc);
+  transform: translateY(-2px);
+}
+
+/* Dark mode support */
+body[data-theme="dark"] .project-card {
+  background-color: var(--dark-card-bg, #2d2d2d);
+}
+
+body[data-theme="dark"] .project-content h3 {
+  color: var(--dark-text, #e0e0e0);
+}
+
+body[data-theme="dark"] .project-content p {
+  color: var(--dark-text-secondary, #b0b0b0);
+}
+
+body[data-theme="dark"] .project-drag-handle {
+  background-color: rgba(45, 45, 45, 0.8);
+}
+
+body[data-theme="dark"] .project-drag-handle span {
+  background-color: var(--dark-primary, #7e5cff);
+}
+
+/* Drag and drop specific styles */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .project-card {
+    cursor: default;
+  }
+  
+  .project-drag-handle {
+    display: none;
+  }
+}
+
+/* GitHub project stats styles */
+.project-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 15px;
+  font-size: 0.85rem;
+}
+
+.project-stats span {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 8px;
+  border-radius: 20px;
+  background-color: rgba(94, 59, 238, 0.1);
+  color: var(--primary-color, #5e3bee);
+}
+
+.project-language {
+  font-weight: bold;
+}
+
+/* Dark mode styles for stats */
+body[data-theme="dark"] .project-stats span {
+  background-color: rgba(126, 92, 255, 0.15);
+  color: var(--dark-primary, #7e5cff);
+} 

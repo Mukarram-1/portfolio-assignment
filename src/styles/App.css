@@ -1,0 +1,10 @@
+/* Remove floating dark mode toggle button styles */
+
+@media (max-width: 768px) {
+  .floating-dark-toggle {
+    bottom: 15px;
+    right: 15px;
+    width: 45px;
+    height: 45px;
+  }
+} 
