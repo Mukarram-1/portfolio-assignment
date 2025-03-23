@@ -70,7 +70,7 @@ const Contact = ({ name, email, phone, city, country }) => {
             viewport={{ once: true }}
           >
             <h3>Contact Information</h3>
-            <p>I'm interested in freelance opportunities and collaborations. Feel free to reach out!</p>
+            <p>I'm interested in freelancing and collaborations. Feel free to reach out!</p>
             
             <div className="contact-details">
               <div className="contact-item">

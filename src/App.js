@@ -9,11 +9,9 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import './App.css';
 
-// Create a wrapper component to access the context
 const PortfolioContent = ({ initialData }) => {
   const { portfolioData, toggleDarkMode } = usePortfolio();
   
-  // Sync the dark mode state with the body attribute on initial render only
   useEffect(() => {
     if (portfolioData.darkMode) {
       document.body.setAttribute('data-theme', 'dark');
@@ -45,7 +43,6 @@ function App() {
   const [dataSubmitted, setDataSubmitted] = useState(false);
   const [portfolioData, setPortfolioData] = useState(null);
   
-  // Handle the form submission
   const handleFormSubmit = (data) => {
     setPortfolioData(data);
     setDataSubmitted(true);

@@ -8,6 +8,10 @@ export const PortfolioProvider = ({ children }) => {
   const [portfolioData, setPortfolioData] = useState({
     personalInfo: {
       name: '',
+      email: '',
+      phone: '',
+      city: '',
+      country: '',
       shortBio: '',
       profilePicture: '',
       skills: [],

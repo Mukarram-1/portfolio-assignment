@@ -43,7 +43,6 @@
   height: 100%;
 }
 
-/* Draggable hint styling */
 .draggable-hint {
   text-align: center;
   margin-top: 2rem;
@@ -58,7 +57,6 @@
   margin: 0;
 }
 
-/* Loading and error states */
 .loading, .error-message {
   text-align: center;
   padding: 2rem;
@@ -87,7 +85,6 @@
   color: #e74c3c;
 }
 
-/* Dark mode support */
 body[data-theme="dark"] .projects {
   background-color: var(--dark-bg, #1a1a1a);
 }
@@ -106,7 +103,6 @@ body[data-theme="dark"] .spinner {
   border-top-color: var(--dark-primary, #7e5cff);
 }
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
   .projects-grid {
     grid-template-columns: 1fr;
@@ -121,21 +117,18 @@ body[data-theme="dark"] .spinner {
   }
 }
 
-/* Animation when dragging */
 .project-item.dragging {
   z-index: 100;
   opacity: 0.8;
   transform: scale(1.05);
 }
 
-/* Media queries for responsive grids */
 @media (max-width: 992px) {
   .projects-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-/* GitHub fetch form styles */
 .github-fetch-form {
   margin-bottom: 2rem;
   display: flex;
@@ -174,7 +167,6 @@ body[data-theme="dark"] .spinner {
   background-color: var(--primary-hover, #4a2bdc);
 }
 
-/* Dark mode styles */
 body[data-theme="dark"] .github-fetch-form input {
   background-color: #333;
   border-color: #555;

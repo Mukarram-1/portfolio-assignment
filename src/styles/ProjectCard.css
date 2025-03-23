@@ -78,7 +78,6 @@
   transform: translateY(-2px);
 }
 
-/* Dark mode support */
 body[data-theme="dark"] .project-card {
   background-color: var(--dark-card-bg, #2d2d2d);
 }
@@ -99,7 +98,6 @@ body[data-theme="dark"] .project-drag-handle span {
   background-color: var(--dark-primary, #7e5cff);
 }
 
-/* Drag and drop specific styles */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -121,7 +119,6 @@ body[data-theme="dark"] .project-drag-handle span {
   }
 }
 
-/* GitHub project stats styles */
 .project-stats {
   display: flex;
   flex-wrap: wrap;
@@ -143,7 +140,6 @@ body[data-theme="dark"] .project-drag-handle span {
   font-weight: bold;
 }
 
-/* Dark mode styles for stats */
 body[data-theme="dark"] .project-stats span {
   background-color: rgba(126, 92, 255, 0.15);
   color: var(--dark-primary, #7e5cff);
