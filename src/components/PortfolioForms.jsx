@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { usePortfolio } from '../context/PortfolioContext';
-import '../styles/DataEntryForm.css';
+import '../styles/PortfolioForms.css';
 
 const PortfolioForms = ({ onSubmit }) => {
   const { setPortfolioData } = usePortfolio();

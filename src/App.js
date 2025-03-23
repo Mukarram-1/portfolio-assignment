@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { PortfolioProvider, usePortfolio } from './context/PortfolioContext';
-import DataEntryForm from './components/PortfolioForms';
+import PortfolioForms from './components/PortfolioForms';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -54,7 +54,7 @@ function App() {
   return (
     <PortfolioProvider initialData={portfolioData}>
       {!dataSubmitted ? (
-        <DataEntryForm onSubmit={handleFormSubmit} />
+        <PortfolioForms onSubmit={handleFormSubmit} />
       ) : (
         <PortfolioContent initialData={portfolioData} />
       )}
