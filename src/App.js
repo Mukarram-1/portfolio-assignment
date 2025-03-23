@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { PortfolioProvider, usePortfolio } from './context/PortfolioContext';
-import DataEntryForm from './components/DataEntryForm';
+import DataEntryForm from './components/PortfolioForms';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -34,7 +34,7 @@ const PortfolioContent = ({ initialData }) => {
           detailedDescription={portfolioData.personalInfo.detailedDescription}
         />
         <Projects initialProjects={portfolioData.projects} />
-        <Contact />
+        <Contact name={portfolioData.personalInfo.name} email={portfolioData.personalInfo.email} phone={portfolioData.personalInfo.phone} city={portfolioData.personalInfo.city} country={portfolioData.personalInfo.country} />
         <Footer socialMediaLinks={portfolioData.socialMedia} />
       </main>
     </>

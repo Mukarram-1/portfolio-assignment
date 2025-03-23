@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import '../styles/Contact.css';
 
-const Contact = () => {
+const Contact = ({ name, email, phone, city, country }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -11,8 +11,6 @@ const Contact = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-
-  // Handle input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prevState => ({
@@ -20,16 +18,12 @@ const Contact = () => {
       [name]: value
     }));
   };
-
-  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
     setError(null);
 
     try {
-      // In a real app, you would send data to your backend
-      // For this example, we'll simulate a successful submission
       await new Promise(resolve => setTimeout(resolve, 1500));
       setIsSubmitted(true);
       setFormData({ name: '', email: '', message: '' });
@@ -40,7 +34,6 @@ const Contact = () => {
     }
   };
 
-  // Show success message and reset it after a delay
   useEffect(() => {
     let timer;
     if (isSubmitted) {
@@ -82,15 +75,15 @@ const Contact = () => {
             <div className="contact-details">
               <div className="contact-item">
                 <i className="fas fa-envelope"></i>
-                <p>email@example.com</p>
+                <p>{email}</p>
               </div>
               <div className="contact-item">
                 <i className="fas fa-phone"></i>
-                <p>+1 234 567 890</p>
+                <p>{phone}</p>
               </div>
               <div className="contact-item">
                 <i className="fas fa-map-marker-alt"></i>
-                <p>City, Country</p>
+                <p>{city}, {country}</p>
               </div>
             </div>
           </motion.div>

@@ -1,9 +1,6 @@
 import { motion } from 'framer-motion';
 
 const Footer = ({ socialMediaLinks = [] }) => {
-  const currentYear = new Date().getFullYear();
-  
-  // Default social media links if none are provided
   const defaultSocialLinks = [
     { name: 'LinkedIn', url: 'https://linkedin.com' },
     { name: 'GitHub', url: 'https://github.com' },
@@ -12,7 +9,6 @@ const Footer = ({ socialMediaLinks = [] }) => {
   
   const links = socialMediaLinks.length > 0 ? socialMediaLinks : defaultSocialLinks;
   
-  // Get social media icon based on name
   const getSocialIcon = (name) => {
     const lowerCaseName = name.toLowerCase();
     
@@ -23,7 +19,6 @@ const Footer = ({ socialMediaLinks = [] }) => {
     if (lowerCaseName.includes('instagram')) return 'fab fa-instagram';
     if (lowerCaseName.includes('youtube')) return 'fab fa-youtube';
     
-    // Default icon if no match
     return 'fas fa-link';
   };
 
@@ -69,16 +64,6 @@ const Footer = ({ socialMediaLinks = [] }) => {
             </div>
           </motion.div>
         </div>
-        
-        <motion.div 
-          className="footer-bottom"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          viewport={{ once: true }}
-        >
-          <p>&copy; {currentYear} My Portfolio. All Rights Reserved.</p>
-        </motion.div>
       </div>
     </footer>
   );

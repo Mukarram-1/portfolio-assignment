@@ -8,13 +8,19 @@ const PortfolioForms = ({ onSubmit }) => {
   
   const [formData, setFormData] = useState({
     name: '',
+    email: '',
+    phone: '',
+    city: '',
+    country: '',
     shortBio: '',
     profilePicture: '',
     skills: '',
     interests: '',
     detailedDescription: '',
     projects: [
-      { id: 'project-1', title: '', description: '', image: '', githubLink: '' }
+      { id: 'project-1', title: '', description: '', image: '', githubLink: '' },
+      { id: 'project-2', title: '', description: '', image: '', githubLink: '' },
+      { id: 'project-3', title: '', description: '', image: '', githubLink: '' }
     ],
     socialMedia: [
       { name: 'LinkedIn', url: '' }
@@ -131,14 +137,16 @@ const PortfolioForms = ({ onSubmit }) => {
     handleProjectChange(index, 'image', imageUrl);
   };
   
-  // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    // Process data for submission
     const processedData = {
       personalInfo: {
         name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        city: formData.city,
+        country: formData.country,
         shortBio: formData.shortBio,
         profilePicture: formData.profilePicture,
         skills: formData.skills.split(',').map(skill => skill.trim()),
@@ -150,10 +158,7 @@ const PortfolioForms = ({ onSubmit }) => {
       darkMode: false
     };
     
-    // Update context with form data
     setPortfolioData(processedData);
-    
-    // Call the onSubmit callback
     if (onSubmit) {
       onSubmit(processedData);
     }
@@ -176,7 +181,7 @@ const PortfolioForms = ({ onSubmit }) => {
               <h2>Personal Information</h2>
               
               <div className="form-group">
-                <label htmlFor="name">Name*</label>
+                <label htmlFor="name">Name</label>
                 <input
                   type="text"
                   id="name"
@@ -187,9 +192,60 @@ const PortfolioForms = ({ onSubmit }) => {
                   placeholder="Your full name"
                 />
               </div>
+
+              <div className="form-group">
+                <label htmlFor="email">Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                  placeholder="Your email address"
+                />
+              </div>
               
               <div className="form-group">
-                <label htmlFor="shortBio">Short Bio* (One-liner about yourself)</label>
+                <label htmlFor="phone">Phone</label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  required
+                  placeholder="Your phone number"
+                />
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="city">City</label>
+                <input
+                  type="text"
+                  id="city"
+                  name="city"
+                  value={formData.city}
+                  onChange={handleChange}
+                  required
+                  placeholder="Your city"
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="country">Country</label>
+                <input
+                  type="text"
+                  id="country"
+                  name="country"
+                  value={formData.country}
+                  onChange={handleChange}
+                  required
+                  placeholder="Your country"
+                />
+              </div>
+              
+              <div className="form-group">
+                <label htmlFor="shortBio">Short Bio</label>
                 <input
                   type="text"
                   id="shortBio"
@@ -197,7 +253,7 @@ const PortfolioForms = ({ onSubmit }) => {
                   value={formData.shortBio}
                   onChange={handleChange}
                   required
-                  placeholder="e.g., Web Developer passionate about creating modern websites"
+                  placeholder="e.g., Web Developer"
                 />
               </div>
               
@@ -221,36 +277,10 @@ const PortfolioForms = ({ onSubmit }) => {
                     <img src={formData.profilePicture} alt="Profile preview" />
                   </div>
                 )}
-                <div className="form-hint">
-                  <span>Or enter an image URL:</span>
-                  <input
-                    type="text"
-                    name="profilePicture"
-                    value={profileImageFile ? '' : formData.profilePicture}
-                    onChange={handleChange}
-                    placeholder="https://example.com/profile.jpg"
-                    disabled={profileImageFile !== null}
-                  />
-                  {profileImageFile && (
-                    <button 
-                      type="button" 
-                      className="reset-file-button"
-                      onClick={() => {
-                        setProfileImageFile(null);
-                        setFormData({
-                          ...formData,
-                          profilePicture: ''
-                        });
-                      }}
-                    >
-                      Reset
-                    </button>
-                  )}
-                </div>
               </div>
               
               <div className="form-group">
-                <label htmlFor="skills">Skills* (comma-separated)</label>
+                <label htmlFor="skills">Skills</label>
                 <input
                   type="text"
                   id="skills"
@@ -258,24 +288,24 @@ const PortfolioForms = ({ onSubmit }) => {
                   value={formData.skills}
                   onChange={handleChange}
                   required
-                  placeholder="e.g., HTML, CSS, JavaScript, React"
+                  placeholder="Separate skills with commas. e.g., HTML, CSS, JavaScript, React"
                 />
               </div>
               
               <div className="form-group">
-                <label htmlFor="interests">Interests (comma-separated)</label>
+                <label htmlFor="interests">Interests</label>
                 <input
                   type="text"
                   id="interests"
                   name="interests"
                   value={formData.interests}
                   onChange={handleChange}
-                  placeholder="e.g., Web Design, UI/UX, Mobile Development"
+                  placeholder="Separate interests with commas. e.g., Web Design, UI/UX, Mobile Development"
                 />
               </div>
               
               <div className="form-group">
-                <label htmlFor="detailedDescription">About Me (Detailed description)*</label>
+                <label htmlFor="detailedDescription">About Me</label>
                 <textarea
                   id="detailedDescription"
                   name="detailedDescription"
@@ -290,7 +320,7 @@ const PortfolioForms = ({ onSubmit }) => {
             
             <div className="form-section">
               <h2>Projects</h2>
-              <p>Enter at least one project. You must add a minimum of 3 projects to enable the draggable feature.</p>
+              <p>You must add a minimum of 3 projects.</p>
               
               {formData.projects.map((project, index) => (
                 <div key={index} className="project-form">
@@ -308,7 +338,7 @@ const PortfolioForms = ({ onSubmit }) => {
                   </div>
                   
                   <div className="form-group">
-                    <label htmlFor={`project-title-${index}`}>Title*</label>
+                    <label htmlFor={`project-title-${index}`}>Title</label>
                     <input
                       type="text"
                       id={`project-title-${index}`}
@@ -320,7 +350,7 @@ const PortfolioForms = ({ onSubmit }) => {
                   </div>
                   
                   <div className="form-group">
-                    <label htmlFor={`project-description-${index}`}>Description*</label>
+                    <label htmlFor={`project-description-${index}`}>Description</label>
                     <textarea
                       id={`project-description-${index}`}
                       value={project.description}
@@ -351,35 +381,10 @@ const PortfolioForms = ({ onSubmit }) => {
                         <img src={project.image} alt={`${project.title} preview`} />
                       </div>
                     )}
-                    <div className="form-hint">
-                      <span>Or enter an image URL:</span>
-                      <input
-                        type="text"
-                        value={projectImageFiles[index] ? '' : project.image}
-                        onChange={(e) => handleProjectChange(index, 'image', e.target.value)}
-                        placeholder="https://example.com/project.jpg"
-                        disabled={projectImageFiles[index] !== null}
-                      />
-                      {projectImageFiles[index] && (
-                        <button 
-                          type="button" 
-                          className="reset-file-button"
-                          onClick={() => {
-                            const updatedFiles = [...projectImageFiles];
-                            updatedFiles[index] = null;
-                            setProjectImageFiles(updatedFiles);
-                            
-                            handleProjectChange(index, 'image', '');
-                          }}
-                        >
-                          Reset
-                        </button>
-                      )}
-                    </div>
                   </div>
                   
                   <div className="form-group">
-                    <label htmlFor={`project-github-${index}`}>GitHub Link*</label>
+                    <label htmlFor={`project-github-${index}`}>GitHub Link</label>
                     <input
                       type="url"
                       id={`project-github-${index}`}
@@ -421,7 +426,7 @@ const PortfolioForms = ({ onSubmit }) => {
                   
                   <div className="form-row">
                     <div className="form-group">
-                      <label htmlFor={`social-name-${index}`}>Platform*</label>
+                      <label htmlFor={`social-name-${index}`}>Platform</label>
                       <input
                         type="text"
                         id={`social-name-${index}`}
@@ -433,7 +438,7 @@ const PortfolioForms = ({ onSubmit }) => {
                     </div>
                     
                     <div className="form-group">
-                      <label htmlFor={`social-url-${index}`}>URL*</label>
+                      <label htmlFor={`social-url-${index}`}>URL</label>
                       <input
                         type="url"
                         id={`social-url-${index}`}
